@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { FakeStoreApi } from '../../services/fake-store-api';
 import { Item } from '../../components/item';
+import { useSearchParams } from "react-router-dom"
 
 const Products = () => {
   const [loading, setLoading] = useState(true);
@@ -20,7 +21,7 @@ const Products = () => {
       fetchProducts().catch(console.error)
   }, [searchQuery])
     
-  if (!loading && searchQuery && !products.length) {
+  if (!loading && searchQuery && !products.length) { 
     return (
         <div className="container">
             <div className="product py-2">
@@ -39,7 +40,7 @@ const Products = () => {
                             <div className="loader" />
                         ) : (
                             products.map((product) => (
-                                <Item key={product.id} data={product} addToCart={() => addToCart(product)} />
+                                <Item key={product.id} data={product} addToCart={() =>{}} />
                             ))
                         )}
                     </div>
