@@ -12,8 +12,9 @@ const App = () => {
        <NavBar/>
        <Routes>
         <Route path='/' element={<Products/>}/>
-        
-
+         <Route path="/product/:productId" element={<Product/>}/>
+         <Route path="/cart" element={<Cart/>}/>
+         <Route path="*" element={<NotFound/>}/>
        </Routes>
     </>
   )
