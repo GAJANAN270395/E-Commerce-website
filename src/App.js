@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate, createSearchParams } from 'react-router-dom';
 import {NavBar} from './components/navbar'
 import { Products } from './pages/products';
 import { Product } from './pages/product';
@@ -7,9 +7,13 @@ import { Cart } from './pages/cart';
 import { NotFound } from './pages/not-found';
 
 const App = () => {
+  const navigate = useNavigate();
+  const onSearch = (searchQuery) => {
+    navigate(`/?${createSearchParams({ q: searchQuery })}`)
+  }
   return (
     <>
-       <NavBar/>
+       <NavBar onSearch={onSearch} cartItemCount={2}/>
        <Routes>
         <Route path='/' element={<Products/>}/>
          <Route path="/product/:productId" element={<Product/>}/>
