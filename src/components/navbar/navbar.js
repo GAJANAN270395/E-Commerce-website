@@ -1,11 +1,12 @@
-import React,{useState} from 'react';
+import React from 'react';
+import {useState} from 'react';
 import { Link } from 'react-router-dom';
 const NavBar = ({onSearch, cartItemCount}) => {
- 
-  const [searchQuery, setSearchQuery] = useState('')
-  const handleSubmit = ()=>{
-      if(searchQuery.trim().length){
-        onSearch(searchQuery.trim())
+  const [searchQuery, setSearchQuery ] = useState('');
+
+  const handleSubmit = () => {
+      if (searchQuery.trim().length) {
+          onSearch(searchQuery.trim())
       }
       setSearchQuery('')
   }
@@ -29,7 +30,11 @@ const NavBar = ({onSearch, cartItemCount}) => {
             </div>
             <Link to="/cart" className="link headerCart">
               <img className="cartImg" src="https://st.depositphotos.com/1835807/1475/i/600/depositphotos_14759785-stock-photo-shopping-cart.jpg" alt="cart"/>
+              {cartItemCount > 0 && (
+                                <div className="cartCounter">{cartItemCount <= 9 ? cartItemCount : "9+"}</div>
+                            )}
             </Link>
+      
           </div>
           </div>
       </header>
