@@ -1,11 +1,21 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import {NavBar} from './components/navbar'
+import { Products } from './pages/products';
+import { Product } from './pages/product';
+import { Cart } from './pages/cart';
+import { NotFound } from './pages/not-found';
 
-export default function App() {
+const App = () => {
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-    </div>
-  );
-}
+    <>
+       <NavBar/>
+       <Routes>
+        <Route path='/' element={<Products/>}/>
+        
+
+       </Routes>
+    </>
+  )
+};
+export default App;
